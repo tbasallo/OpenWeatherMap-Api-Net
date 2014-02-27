@@ -1,7 +1,7 @@
 OpenWeatherMap-Api-Net
 ======================
 
-This project is a fully asynchronous .NET Portable Class Library for interacting with the great [OpenWeatherMap API](http://openweathermap.org/API).
+This project is a fully asynchronous .NET Portable Class Library and .Net 4.5 library for interacting with the great [OpenWeatherMap API](http://openweathermap.org/API).
 
 Documentation on [http://projects.joancaron.net/openweathermap/](http://projects.joancaron.net/openweathermap/).
 
@@ -22,7 +22,11 @@ Console.WriteLine(currentWeather.Weather.Value);
 * Xamarin.Android
 * Xamarin.Mac
 
-###Dependencies
+###Dependencies .Net 4.5 project
+
+* System.Net.Http
+
+###Dependencies Portable project (PCL)
 
 * Microsoft.Bcl
 * Microsoft.Bcl.Build
