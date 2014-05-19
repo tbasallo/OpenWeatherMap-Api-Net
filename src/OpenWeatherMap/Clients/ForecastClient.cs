@@ -28,8 +28,6 @@ namespace OpenWeatherMap
         public ForecastClient(IOpenWeatherMapRequest request)
             : base(request, "forecast")
         {
-            Request = request;
-            Request.Uri.AddSegment("forecast");
         }
 
         /// <summary>

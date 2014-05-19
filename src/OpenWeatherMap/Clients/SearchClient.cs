@@ -28,8 +28,6 @@ namespace OpenWeatherMap
         public SearchClient(IOpenWeatherMapRequest request)
             : base(request, "find")
         {
-            Request = request;
-            Request.Uri.AddSegment("find");
         }
 
         /// <summary>
