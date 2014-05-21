@@ -18,7 +18,7 @@ Console.WriteLine(currentWeather.Weather.Value);
 * .Net 4 and higher
 * Windows Store Apps 8 and higher
 * Silverlight 5
-* Windows Phone 8
+* Windows Phone 8 and higher
 * Xamarin.Android
 * Xamarin.Mac
 
