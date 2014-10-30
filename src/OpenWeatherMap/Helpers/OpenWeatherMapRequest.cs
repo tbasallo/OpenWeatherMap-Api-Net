@@ -1,77 +1,87 @@
-﻿// ***********************************************************************
-// Assembly         : OpenWeatherMap
-// Author           : Joan Caron
-// Created          : 02-19-2014
-// License          : MIT License (MIT) http://opensource.org/licenses/MIT
-// Last Modified By : Joan Caron
-// Last Modified On : 02-21-2014
-// ***********************************************************************
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="OpenWeatherMapRequest.cs" company="Joan Caron">
-//     Copyright (c) Joan Caron. All rights reserved.
+// Copyright (c) 2014 All Rights Reserved
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
+// <author>Joan Caron</author>
+// <summary>Implements the open weather map request class</summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OpenWeatherMap
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+
     /// <summary>
-    /// Class OpenWeatherMapRequest.
+    ///     Class OpenWeatherMapRequest.
     /// </summary>
-    public class OpenWeatherMapRequest : IOpenWeatherMapRequest
+    /// <seealso cref="T:OpenWeatherMap.IOpenWeatherMapRequest"/>
+    internal sealed class OpenWeatherMapRequest : IOpenWeatherMapRequest
     {
         /// <summary>
-        /// Gets or sets the URI.
+        ///     Initializes a new instance of the <see cref="OpenWeatherMapRequest"/> class.
         /// </summary>
-        /// <value>The URI.</value>
-        public Uri Uri { get; set; }
-
-        /// <summary>
-        /// Gets or sets the application identifier.
-        /// </summary>
-        /// <value>The application identifier.</value>
-        public string AppId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the querystring parameters.
-        /// </summary>
-        /// <value>The parameters.</value>
-        public IDictionary<string, string> Parameters { get; set; }
-
-        /// <summary>
-        /// Gets or sets the HTTP client.
-        /// </summary>
-        /// <value>The HTTP client.</value>
-        public HttpClient HttpClient { get; set; }
-
-        /// <summary>
-        /// Gets or sets the request.
-        /// </summary>
-        /// <value>The request.</value>
-        public HttpRequestMessage Request { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="OpenWeatherMapRequest"/> class.
-        /// </summary>
-        /// <param name="uri">The URI.</param>
+        /// <param name="uri">       The URI.</param>
         /// <param name="httpClient">The HTTP client.</param>
-        /// <param name="appId">The application identifier.</param>
+        /// <param name="appId">     The application identifier.</param>
         public OpenWeatherMapRequest(Uri uri, HttpClient httpClient, string appId)
         {
             Ensure.ArgumentNotNull(uri, "uri");
             Ensure.ArgumentNotNull(httpClient, "httpClient");
 
-            Uri = uri;
-            HttpClient = httpClient;
-            Parameters = new Dictionary<string, string>();
+            this.Uri = uri;
+            this.HttpClient = httpClient;
+            this.Parameters = new Dictionary<string, string>();
             if (!string.IsNullOrEmpty(appId))
             {
-                AppId = appId;
-                Parameters.Add("APPID", appId);
+                this.AppId = appId;
+                this.Parameters.Add("APPID", appId);
             }
         }
+
+        /// <summary>
+        ///     Gets or sets the URI.
+        /// </summary>
+        /// <value>
+        ///     The URI.
+        /// </value>
+        /// <seealso cref="P:OpenWeatherMap.IOpenWeatherMapRequest.Uri"/>
+        public Uri Uri { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the application identifier.
+        /// </summary>
+        /// <value>
+        ///     The application identifier.
+        /// </value>
+        /// <seealso cref="P:OpenWeatherMap.IOpenWeatherMapRequest.AppId"/>
+        public string AppId { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the querystring parameters.
+        /// </summary>
+        /// <value>
+        ///     The parameters.
+        /// </value>
+        /// <seealso cref="P:OpenWeatherMap.IOpenWeatherMapRequest.Parameters"/>
+        public IDictionary<string, string> Parameters { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the HTTP client.
+        /// </summary>
+        /// <value>
+        ///     The HTTP client.
+        /// </value>
+        /// <seealso cref="P:OpenWeatherMap.IOpenWeatherMapRequest.HttpClient"/>
+        public HttpClient HttpClient { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the request.
+        /// </summary>
+        /// <value>
+        ///     The request.
+        /// </value>
+        /// <seealso cref="P:OpenWeatherMap.IOpenWeatherMapRequest.Request"/>
+        public HttpRequestMessage Request { get; set; }
     }
 }

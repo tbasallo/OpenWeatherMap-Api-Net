@@ -1,51 +1,53 @@
-﻿// ***********************************************************************
-// Assembly         : OpenWeatherMap
-// Author           : Joan Caron
-// Created          : 02-20-2014
-// License          : MIT License (MIT) http://opensource.org/licenses/MIT
-// Last Modified By : Joan Caron
-// Last Modified On : 02-20-2014
-// ***********************************************************************
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Temperature.cs" company="Joan Caron">
-//     Copyright (c) Joan Caron. All rights reserved.
+// Copyright (c) 2014 All Rights Reserved
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System.Xml.Serialization;
+// <author>Joan Caron</author>
+// <summary>Implements the temperature class</summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OpenWeatherMap
 {
+    using System.Xml.Serialization;
+
     /// <summary>
-    /// Class Temperature.
+    ///     Class Temperature.
     /// </summary>
-    public class Temperature
+    public sealed class Temperature
     {
         /// <summary>
-        /// Gets or sets the value.
+        ///     Gets or sets the value.
         /// </summary>
-        /// <value>The value.</value>
+        /// <value>
+        ///     The value.
+        /// </value>
         [XmlAttribute("value")]
         public double Value { get; set; }
 
         /// <summary>
-        /// Gets or sets the minimum.
+        ///     Gets or sets the minimum.
         /// </summary>
-        /// <value>The minimum.</value>
+        /// <value>
+        ///     The minimum.
+        /// </value>
         [XmlAttribute("min")]
         public double Min { get; set; }
 
         /// <summary>
-        /// Gets or sets the maximum.
+        ///     Gets or sets the maximum.
         /// </summary>
-        /// <value>The maximum.</value>
+        /// <value>
+        ///     The maximum.
+        /// </value>
         [XmlAttribute("max")]
         public double Max { get; set; }
 
         /// <summary>
-        /// Gets or sets the unit.
+        ///     Gets or sets the unit.
         /// </summary>
-        /// <value>The unit.</value>
+        /// <value>
+        ///     The unit.
+        /// </value>
         [XmlAttribute("unit")]
         public string Unit { get; set; }
     }

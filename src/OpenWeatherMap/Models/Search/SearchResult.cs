@@ -1,52 +1,55 @@
-﻿// ***********************************************************************
-// Assembly         : OpenWeatherMap
-// Author           : Joan Caron
-// Created          : 02-20-2014
-// License          : MIT License (MIT) http://opensource.org/licenses/MIT
-// Last Modified By : Joan Caron
-// Last Modified On : 02-20-2014
-// ***********************************************************************
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="SearchResult.cs" company="Joan Caron">
-//     Copyright (c) Joan Caron. All rights reserved.
+// Copyright (c) 2014 All Rights Reserved
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System.Xml.Serialization;
+// <author>Joan Caron</author>
+// <summary>Implements the search result class</summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OpenWeatherMap
 {
+    using System.Xml.Serialization;
+
     /// <summary>
-    /// Class SearchResult.
+    ///     Class SearchResult.
     /// </summary>
     public class SearchResult
     {
         /// <summary>
-        /// Gets or sets the calculation time.
+        ///     Gets or sets the calculation time.
         /// </summary>
-        /// <value>The calculation time.</value>
+        /// <value>
+        ///     The calculation time.
+        /// </value>
         [XmlElement("calctime")]
         public double CalcTime { get; set; }
 
         /// <summary>
-        /// Gets or sets the result count.
+        ///     Gets or sets the result count.
         /// </summary>
-        /// <value>The count.</value>
+        /// <value>
+        ///     The count.
+        /// </value>
         [XmlElement("count")]
         public int Count { get; set; }
 
         /// <summary>
-        /// Gets or sets the mode.
+        ///     Gets or sets the mode.
         /// </summary>
-        /// <value>The mode.</value>
+        /// <value>
+        ///     The mode.
+        /// </value>
         [XmlElement("mode")]
         public string Mode { get; set; }
 
         /// <summary>
-        /// Gets or sets the list.
+        ///     Gets or sets the list.
         /// </summary>
-        /// <value>The list.</value>
-        [XmlArray("list"), XmlArrayItem("item", Type = typeof(WeatherItem))]
+        /// <value>
+        ///     The list.
+        /// </value>
+        [XmlArray("list")]
+        [XmlArrayItem("item", Type = typeof(WeatherItem))]
         public WeatherItem[] List { get; set; }
     }
 }

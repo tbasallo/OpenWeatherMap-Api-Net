@@ -1,63 +1,51 @@
-﻿// ***********************************************************************
-// Assembly         : OpenWeatherMap
-// Author           : Joan Caron
-// Created          : 02-19-2014
-// License          : MIT License (MIT) http://opensource.org/licenses/MIT
-// Last Modified By : Joan Caron
-// Last Modified On : 02-19-2014
-// ***********************************************************************
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="ICurrentWeatherClient.cs" company="Joan Caron">
-//     Copyright (c) Joan Caron. All rights reserved.
+// Copyright (c) 2014 All Rights Reserved
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System.Threading.Tasks;
+// <author>Joan Caron</author>
+// <summary>Declares the ICurrentWeatherClient interface</summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OpenWeatherMap
 {
+    using System.Threading.Tasks;
+
     /// <summary>
-    /// Interface ICurrentWeatherClient
+    ///     Interface ICurrentWeatherClient.
     /// </summary>
     public interface ICurrentWeatherClient
     {
         /// <summary>
-        /// Gets Current weather by city name.
+        ///     Gets Current weather by city name.
         /// </summary>
         /// <param name="cityName">Name of the city.</param>
-        /// <param name="metric">The metric system.</param>
+        /// <param name="metric">  The metric system.</param>
         /// <param name="language">The language.</param>
-        /// <returns>Task{CurrentWeatherResponse}.</returns>
-        Task<CurrentWeatherResponse> GetByName(
-            string cityName,
-            MetricSystem metric = MetricSystem.Internal,
-            OpenWeatherMapLanguage language = OpenWeatherMapLanguage.EN
-            );
+        /// <returns>
+        ///     Task {CurrentWeatherResponse}.
+        /// </returns>
+        Task<CurrentWeatherResponse> GetByName(string cityName, MetricSystem metric = MetricSystem.Internal, OpenWeatherMapLanguage language = OpenWeatherMapLanguage.EN);
 
         /// <summary>
-        /// Gets Current weather by coordinates.
+        ///     Gets Current weather by coordinates.
         /// </summary>
         /// <param name="coordinates">The coordinates.</param>
-        /// <param name="metric">The metric system.</param>
-        /// <param name="language">The language.</param>
-        /// <returns>Task{CurrentWeatherResponse}.</returns>
-        Task<CurrentWeatherResponse> GetByCoordinates(
-            Coordinates coordinates,
-            MetricSystem metric = MetricSystem.Internal,
-            OpenWeatherMapLanguage language = OpenWeatherMapLanguage.EN
-            );
+        /// <param name="metric">     The metric system.</param>
+        /// <param name="language">   The language.</param>
+        /// <returns>
+        ///     Task {CurrentWeatherResponse}.
+        /// </returns>
+        Task<CurrentWeatherResponse> GetByCoordinates(Coordinates coordinates, MetricSystem metric = MetricSystem.Internal, OpenWeatherMapLanguage language = OpenWeatherMapLanguage.EN);
 
         /// <summary>
-        /// Gets Current weather by city identifier.
+        ///     Gets Current weather by city identifier.
         /// </summary>
-        /// <param name="cityId">The city identifier.</param>
-        /// <param name="metric">The metric.</param>
+        /// <param name="cityId">  The city identifier.</param>
+        /// <param name="metric">  The metric.</param>
         /// <param name="language">The language.</param>
-        /// <returns>Task{CurrentWeatherResponse}.</returns>
-        Task<CurrentWeatherResponse> GetByCityId(
-            int cityId,
-            MetricSystem metric = MetricSystem.Internal,
-            OpenWeatherMapLanguage language = OpenWeatherMapLanguage.EN
-            );
+        /// <returns>
+        ///     Task {CurrentWeatherResponse}.
+        /// </returns>
+        Task<CurrentWeatherResponse> GetByCityId(int cityId, MetricSystem metric = MetricSystem.Internal, OpenWeatherMapLanguage language = OpenWeatherMapLanguage.EN);
     }
 }

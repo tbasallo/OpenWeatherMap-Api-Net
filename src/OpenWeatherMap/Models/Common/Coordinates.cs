@@ -1,37 +1,35 @@
-﻿// ***********************************************************************
-// Assembly         : OpenWeatherMap
-// Author           : Joan Caron
-// Created          : 02-20-2014
-// License          : MIT License (MIT) http://opensource.org/licenses/MIT
-// Last Modified By : Joan Caron
-// Last Modified On : 02-20-2014
-// ***********************************************************************
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Coordinates.cs" company="Joan Caron">
-//     Copyright (c) Joan Caron. All rights reserved.
+// Copyright (c) 2014 All Rights Reserved
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System.Xml.Serialization;
+// <author>Joan Caron</author>
+// <summary>Implements the coordinates class</summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OpenWeatherMap
 {
+    using System.Xml.Serialization;
+
     /// <summary>
-    /// Class Coordinates.
+    ///     Class Coordinates.
     /// </summary>
-    public class Coordinates
+    public struct Coordinates
     {
         /// <summary>
-        /// Gets or sets the longitude.
+        ///     Gets or sets the longitude.
         /// </summary>
-        /// <value>The longitude.</value>
+        /// <value>
+        ///     The longitude.
+        /// </value>
         [XmlAttribute("lon")]
         public double Longitude { get; set; }
 
         /// <summary>
-        /// Gets or sets the latitude.
+        ///     Gets or sets the latitude.
         /// </summary>
-        /// <value>The latitude.</value>
+        /// <value>
+        ///     The latitude.
+        /// </value>
         [XmlAttribute("lat")]
         public double Latitude { get; set; }
     }

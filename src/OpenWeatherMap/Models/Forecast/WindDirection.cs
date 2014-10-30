@@ -1,44 +1,44 @@
-﻿// ***********************************************************************
-// Assembly         : OpenWeatherMap
-// Author           : Joan Caron
-// Created          : 02-20-2014
-// License          : MIT License (MIT) http://opensource.org/licenses/MIT
-// Last Modified By : Joan Caron
-// Last Modified On : 02-20-2014
-// ***********************************************************************
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="WindDirection.cs" company="Joan Caron">
-//     Copyright (c) Joan Caron. All rights reserved.
+// Copyright (c) 2014 All Rights Reserved
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System.Xml.Serialization;
+// <author>Joan Caron</author>
+// <summary>Implements the wind direction class</summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OpenWeatherMap
 {
+    using System.Xml.Serialization;
+
     /// <summary>
-    /// Class WindDirection.
+    ///     Class WindDirection.
     /// </summary>
-    public class WindDirection
+    public sealed class WindDirection
     {
         /// <summary>
-        /// Gets or sets the degrees.
+        ///     Gets or sets the degrees.
         /// </summary>
-        /// <value>The deg.</value>
+        /// <value>
+        ///     The deg.
+        /// </value>
         [XmlAttribute("deg")]
         public double Deg { get; set; }
 
         /// <summary>
-        /// Gets or sets the code.
+        ///     Gets or sets the code.
         /// </summary>
-        /// <value>The code.</value>
+        /// <value>
+        ///     The code.
+        /// </value>
         [XmlAttribute("code")]
         public string Code { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        ///     Gets or sets the name.
         /// </summary>
-        /// <value>The name.</value>
+        /// <value>
+        ///     The name.
+        /// </value>
         [XmlAttribute("name")]
         public string Name { get; set; }
     }

@@ -1,92 +1,101 @@
-﻿// ***********************************************************************
-// Assembly         : OpenWeatherMap
-// Author           : Joan Caron
-// Created          : 02-19-2014
-// License          : MIT License (MIT) http://opensource.org/licenses/MIT
-// Last Modified By : Joan Caron
-// Last Modified On : 02-21-2014
-// ***********************************************************************
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="ApiClientBase.cs" company="Joan Caron">
-//     Copyright (c) Joan Caron. All rights reserved.
+// Copyright (c) 2014 All Rights Reserved
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
-using System.Globalization;
-using System.Net.Http;
-using System.Threading.Tasks;
-using System.Xml;
-using System.Xml.Serialization;
+// <author>Joan Caron</author>
+// <summary>Implements the API client base class</summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OpenWeatherMap
 {
+    using System;
+    using System.Globalization;
+    using System.Net.Http;
+    using System.Threading.Tasks;
+    using System.Xml;
+    using System.Xml.Serialization;
+
     /// <summary>
-    /// Class ApiClientBase.
+    ///     Class ApiClientBase.
     /// </summary>
-    public class ApiClientBase : IApiClientBase
+    /// <seealso cref="T:OpenWeatherMap.IApiClientBase"/>
+    internal class ApiClientBase : IApiClientBase
     {
         /// <summary>
-        /// Gets or sets the openweathermap request.
+        ///     Initializes a new instance of the OpenWeatherMap.ApiClientBase class.
         /// </summary>
-        /// <value>The request.</value>
+        /// <param name="request">The openweathermap request.</param>
+        /// <param name="segment">The segment.</param>
+        protected ApiClientBase(IOpenWeatherMapRequest request, string segment)
+        {
+            request.Uri = request.Uri.AddSegment(segment);
+            this.Request = request;
+        }
+
+        /// <summary>
+        ///     Gets or sets the openweathermap request.
+        /// </summary>
+        /// <value>
+        ///     The request.
+        /// </value>
+        /// <seealso cref="P:OpenWeatherMap.IApiClientBase.Request"/>
         public IOpenWeatherMapRequest Request { get; set; }
 
         /// <summary>
-        /// Gets by name.
+        ///     Gets by name.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">Generic type parameter.</typeparam>
         /// <param name="cityName">Name of the city.</param>
-        /// <param name="metric">The metric.</param>
+        /// <param name="metric">  The metric.</param>
         /// <param name="language">The language.</param>
-        /// <param name="count">The count.</param>
+        /// <param name="count">   The count.</param>
         /// <param name="accuracy">The accuracy.</param>
-        /// <returns>Task{``0}.</returns>
-        internal Task<T> GetByName<T>(
-            string cityName,
-            MetricSystem metric,
-            OpenWeatherMapLanguage language,
-            int? count,
-            Accuracy? accuracy
-            )
+        /// <returns>
+        ///     The by name.
+        /// </returns>
+        internal Task<T> GetByName<T>(string cityName, MetricSystem metric, OpenWeatherMapLanguage language, int? count, Accuracy? accuracy)
         {
             Ensure.ArgumentNotNullOrEmptyString(cityName, "cityName");
             Ensure.ArgumentNotNull(metric, "metric");
             Ensure.ArgumentNotNull(language, "language");
 
-            Request.Parameters.Add("q", cityName.UrlEncode());
+            this.Request.Parameters.Add("q", cityName.UrlEncode());
             if (metric != MetricSystem.Internal)
-                Request.Parameters.Add("units", metric.ToString().ToLowerInvariant());
+            {
+                this.Request.Parameters.Add("units", metric.ToString().ToLowerInvariant());
+            }
+
             if (language != OpenWeatherMapLanguage.EN)
-                Request.Parameters.Add("lang", language.ToString().ToLowerInvariant());
+            {
+                this.Request.Parameters.Add("lang", language.ToString().ToLowerInvariant());
+            }
 
             if (count.HasValue)
             {
-                Request.Parameters.Add("cnt", count.Value.ToString(CultureInfo.InvariantCulture));
-            }
-            if (accuracy.HasValue)
-            {
-                Request.Parameters.Add("type", accuracy.Value.ToString().ToLowerInvariant());
+                this.Request.Parameters.Add("cnt", count.Value.ToString(CultureInfo.InvariantCulture));
             }
 
-            return RunGetRequest<T>();
+            if (accuracy.HasValue)
+            {
+                this.Request.Parameters.Add("type", accuracy.Value.ToString().ToLowerInvariant());
+            }
+
+            return this.RunGetRequest<T>();
         }
 
         /// <summary>
-        /// Gets by coordinates.
+        ///     Gets by coordinates.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="T">Generic type parameter.</typeparam>
         /// <param name="coordinates">The coordinates.</param>
-        /// <param name="metric">The metric.</param>
-        /// <param name="language">The language.</param>
-        /// <param name="count">The count.</param>
-        /// <param name="accuracy">The accuracy.</param>
-        /// <returns>Task{``0}.</returns>
-        internal Task<T> GetByCoordinates<T>(Coordinates coordinates,
-            MetricSystem metric,
-            OpenWeatherMapLanguage language,
-            int? count,
-            Accuracy? accuracy)
+        /// <param name="metric">     The metric.</param>
+        /// <param name="language">   The language.</param>
+        /// <param name="count">      The count.</param>
+        /// <param name="accuracy">   The accuracy.</param>
+        /// <returns>
+        ///     The by coordinates.
+        /// </returns>
+        internal Task<T> GetByCoordinates<T>(Coordinates coordinates, MetricSystem metric, OpenWeatherMapLanguage language, int? count, Accuracy? accuracy)
         {
             Ensure.ArgumentNotNull(metric, "metric");
             Ensure.ArgumentNotNull(language, "language");
@@ -94,83 +103,99 @@ namespace OpenWeatherMap
             Ensure.ArgumentNotNull(coordinates.Latitude, "coordinates.Latitude");
             Ensure.ArgumentNotNull(coordinates.Longitude, "coordinates.Longitude");
 
-            Request.Parameters.Add("lat", coordinates.Latitude.ToString(CultureInfo.InvariantCulture));
-            Request.Parameters.Add("lon", coordinates.Longitude.ToString(CultureInfo.InvariantCulture));
+            this.Request.Parameters.Add("lat", coordinates.Latitude.ToString(CultureInfo.InvariantCulture));
+            this.Request.Parameters.Add("lon", coordinates.Longitude.ToString(CultureInfo.InvariantCulture));
 
             if (metric != MetricSystem.Internal)
-                Request.Parameters.Add("units", metric.ToString().ToLowerInvariant());
+            {
+                this.Request.Parameters.Add("units", metric.ToString().ToLowerInvariant());
+            }
 
             if (language != OpenWeatherMapLanguage.EN)
-                Request.Parameters.Add("lang", language.ToString().ToLowerInvariant());
+            {
+                this.Request.Parameters.Add("lang", language.ToString().ToLowerInvariant());
+            }
 
             if (count.HasValue)
             {
-                Request.Parameters.Add("cnt", count.Value.ToString(CultureInfo.InvariantCulture));
-            }
-            if (accuracy.HasValue)
-            {
-                Request.Parameters.Add("type", accuracy.Value.ToString().ToLowerInvariant());
+                this.Request.Parameters.Add("cnt", count.Value.ToString(CultureInfo.InvariantCulture));
             }
 
-            return RunGetRequest<T>();
+            if (accuracy.HasValue)
+            {
+                this.Request.Parameters.Add("type", accuracy.Value.ToString().ToLowerInvariant());
+            }
+
+            return this.RunGetRequest<T>();
         }
 
         /// <summary>
-        /// Gets by city identifier.
+        ///     Gets by city identifier.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="cityId">The city identifier.</param>
-        /// <param name="metric">The metric.</param>
+        /// <typeparam name="T">Generic type parameter.</typeparam>
+        /// <param name="cityId">  Identifier for the city.</param>
+        /// <param name="metric">  The metric.</param>
         /// <param name="language">The language.</param>
-        /// <param name="count">The count.</param>
-        /// <returns>Task{``0}.</returns>
+        /// <param name="count">   The count.</param>
+        /// <returns>
+        ///     The by city identifier.
+        /// </returns>
         internal Task<T> GetByCityId<T>(int cityId, MetricSystem metric, OpenWeatherMapLanguage language, int? count)
         {
             Ensure.ArgumentNotNull(metric, "metric");
             Ensure.ArgumentNotNull(language, "language");
 
-            Request.Parameters.Add("id", cityId.ToString(CultureInfo.InvariantCulture));
+            this.Request.Parameters.Add("id", cityId.ToString(CultureInfo.InvariantCulture));
 
             if (metric != MetricSystem.Internal)
-                Request.Parameters.Add("units", metric.ToString().ToLowerInvariant());
+            {
+                this.Request.Parameters.Add("units", metric.ToString().ToLowerInvariant());
+            }
 
             if (language != OpenWeatherMapLanguage.EN)
-                Request.Parameters.Add("lang", language.ToString().ToLowerInvariant());
+            {
+                this.Request.Parameters.Add("lang", language.ToString().ToLowerInvariant());
+            }
 
             if (count.HasValue)
             {
-                Request.Parameters.Add("cnt", count.Value.ToString(CultureInfo.InvariantCulture));
+                this.Request.Parameters.Add("cnt", count.Value.ToString(CultureInfo.InvariantCulture));
             }
-            return RunGetRequest<T>();
+
+            return this.RunGetRequest<T>();
         }
 
         /// <summary>
-        /// Runs the get request.
+        ///     Executes the get request operation.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns>Task{``0}.</returns>
+        /// <typeparam name="T">Generic type parameter.</typeparam>
+        /// <returns>
+        ///     A Task&lt;T&gt;
+        /// </returns>
         Task<T> RunGetRequest<T>()
         {
-            Request.Parameters.Add("mode", "xml");
-            var uri = Request.Uri.AddQuery(Request.Parameters.ToUrlParameters());
-            Request.Request = new HttpRequestMessage(HttpMethod.Get, uri);
+            this.Request.Parameters.Add("mode", "xml");
+            var uri = this.Request.Uri.AddQuery(this.Request.Parameters.ToUrlParameters());
+            this.Request.Request = new HttpRequestMessage(HttpMethod.Get, uri);
 
-            return Send<T>();
+            return this.Send<T>();
         }
 
         /// <summary>
-        /// Sends the request.
+        ///     Send this message.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns>Task{T}.</returns>
-        /// <exception cref="OpenWeatherMap.OpenWeatherMapException">
-        /// </exception>
+        /// <exception cref="OpenWeatherMapException">Thrown when an Open Weather Map error condition
+        /// occurs.</exception>
+        /// <typeparam name="T">Generic type parameter.</typeparam>
+        /// <returns>
+        ///     A Task&lt;T&gt;
+        /// </returns>
         async Task<T> Send<T>()
         {
             HttpResponseMessage response;
             try
             {
-                response = await Request.HttpClient.SendAsync(Request.Request);
+                response = await this.Request.HttpClient.SendAsync(this.Request.Request);
             }
             catch (Exception ex)
             {
@@ -183,11 +208,13 @@ namespace OpenWeatherMap
             }
 
             var responseString = await response.Content.ReadAsStringAsync();
+
             // OpenWeatherMap returns errors with json
-            if (string.IsNullOrEmpty(responseString) || responseString.StartsWith("{"))
+            if (string.IsNullOrEmpty(responseString) || responseString.StartsWith("{", StringComparison.Ordinal))
             {
                 throw new OpenWeatherMapException(response);
             }
+
             var responseStream = await response.Content.ReadAsStreamAsync();
             var xmlSerializer = new XmlSerializer(typeof(T));
             var xmlReader = XmlReader.Create(responseStream);
@@ -195,18 +222,8 @@ namespace OpenWeatherMap
             {
                 return (T)xmlSerializer.Deserialize(xmlReader);
             }
-            throw new OpenWeatherMapException(response);
-        }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiClientBase"/> class.
-        /// </summary>
-        /// <param name="request">The request.</param>
-        /// <param name="segment">The segment.</param>
-        protected ApiClientBase(IOpenWeatherMapRequest request, string segment)
-        {
-            request.Uri = request.Uri.AddSegment(segment);
-            Request = request;
+            throw new OpenWeatherMapException(response);
         }
     }
 }

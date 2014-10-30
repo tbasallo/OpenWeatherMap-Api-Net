@@ -1,46 +1,48 @@
-﻿// ***********************************************************************
-// Assembly         : OpenWeatherMap
-// Author           : Joan Caron
-// Created          : 02-19-2014
-// License          : MIT License (MIT) http://opensource.org/licenses/MIT
-// Last Modified By : Joan Caron
-// Last Modified On : 02-22-2014
-// ***********************************************************************
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="IOpenWeatherMapClient.cs" company="Joan Caron">
-//     Copyright (c) Joan Caron. All rights reserved.
+// Copyright (c) 2014 All Rights Reserved
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+// <author>Joan Caron</author>
+// <summary>Declares the IOpenWeatherMapClient interface</summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OpenWeatherMap
 {
     /// <summary>
-    /// Interface IOpenWeatherMapClient
+    ///     Interface IOpenWeatherMapClient.
     /// </summary>
-    public interface IOpenWeatherMapClient
+    internal interface IOpenWeatherMapClient
     {
         /// <summary>
-        /// Gets or sets the application identifier.
+        ///     Gets or sets the application identifier.
         /// </summary>
-        /// <value>The application identifier.</value>
+        /// <value>
+        ///     The application identifier.
+        /// </value>
         string AppId { get; set; }
 
         /// <summary>
-        /// Gets the current weather client.
+        ///     Gets the current weather client.
         /// </summary>
-        /// <value>The current weather.</value>
+        /// <value>
+        ///     The current weather.
+        /// </value>
         ICurrentWeatherClient CurrentWeather { get; }
 
         /// <summary>
-        /// Gets the forecast client.
+        ///     Gets the forecast client.
         /// </summary>
-        /// <value>The forecast.</value>
+        /// <value>
+        ///     The forecast.
+        /// </value>
         IForecastClient Forecast { get; }
 
         /// <summary>
-        /// Gets the search client.
+        ///     Gets the search client.
         /// </summary>
-        /// <value>The search.</value>
+        /// <value>
+        ///     The search.
+        /// </value>
         ISearchClient Search { get; }
     }
 }

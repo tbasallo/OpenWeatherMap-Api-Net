@@ -1,32 +1,30 @@
-﻿// ***********************************************************************
-// Assembly         : OpenWeatherMap
-// Author           : Joan Caron
-// Created          : 02-19-2014
-// License          : MIT License (MIT) http://opensource.org/licenses/MIT
-// Last Modified By : Joan Caron
-// Last Modified On : 02-21-2014
-// ***********************************************************************
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="UriExtensions.cs" company="Joan Caron">
-//     Copyright (c) Joan Caron. All rights reserved.
+// Copyright (c) 2014 All Rights Reserved
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
+// <author>Joan Caron</author>
+// <summary>Implements the URI extensions class</summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OpenWeatherMap
 {
+    using System;
+    using System.Diagnostics.CodeAnalysis;
+
     /// <summary>
-    /// Class UriExtensions.
+    ///     Class UriExtensions.
     /// </summary>
     internal static class UriExtensions
     {
         /// <summary>
-        /// Adds the segment value to the url.
+        ///     Adds the segment value to the url.
         /// </summary>
         /// <param name="originalUri">The original URI.</param>
-        /// <param name="segment">The segment.</param>
-        /// <returns>Uri.</returns>
+        /// <param name="segment">    The segment .</param>
+        /// <returns>
+        ///     Uri .
+        /// </returns>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1630:DocumentationTextMustContainWhitespace", Justification = "Reviewed. Suppression is OK here.")]
         public static Uri AddSegment(this Uri originalUri, string segment)
         {
             originalUri = new Uri(originalUri.OriginalString + "/" + segment);
@@ -34,17 +32,17 @@ namespace OpenWeatherMap
         }
 
         /// <summary>
-        /// Adds the query value to the url.
+        ///     Adds the query value to the url.
         /// </summary>
         /// <param name="originalUri">The original URI.</param>
-        /// <param name="segment">The segment.</param>
-        /// <returns>Uri.</returns>
+        /// <param name="segment">    The segment.</param>
+        /// <returns>
+        ///     Uri.
+        /// </returns>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1630:DocumentationTextMustContainWhitespace", Justification = "Reviewed. Suppression is OK here.")]
         public static Uri AddQuery(this Uri originalUri, string segment)
         {
-            var uriBuilder = new UriBuilder(originalUri)
-            {
-                Query = segment
-            };
+            var uriBuilder = new UriBuilder(originalUri) { Query = segment };
             originalUri = uriBuilder.Uri;
             return originalUri;
         }

@@ -1,106 +1,100 @@
-﻿// ***********************************************************************
-// Assembly         : OpenWeatherMap
-// Author           : Joan Caron
-// Created          : 02-20-2014
-// License          : MIT License (MIT) http://opensource.org/licenses/MIT
-// Last Modified By : Joan Caron
-// Last Modified On : 02-19-2014
-// ***********************************************************************
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="OpenWeatherMapLanguage.cs" company="Joan Caron">
-//     Copyright (c) Joan Caron. All rights reserved.
+// Copyright (c) 2014 All Rights Reserved
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+// <author>Joan Caron</author>
+// <summary>Implements the open weather map language class</summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OpenWeatherMap
 {
     /// <summary>
-    /// Enum OpenWeatherMapLanguage
+    ///     Enum OpenWeatherMapLanguage.
     /// </summary>
     public enum OpenWeatherMapLanguage
     {
         /// <summary>
-        /// English
+        ///     English
         /// </summary>
-        EN,
+        EN, 
 
         /// <summary>
-        /// Russian
+        ///     Russian
         /// </summary>
-        RU,
+        RU, 
 
         /// <summary>
-        /// Italian
+        ///     Italian
         /// </summary>
-        IT,
+        IT, 
 
         /// <summary>
-        /// Spanish
+        ///     Spanish
         /// </summary>
-        SP,
+        SP, 
 
         /// <summary>
-        /// Ukrainian
+        ///     Ukrainian
         /// </summary>
-        UA,
+        UA, 
 
         /// <summary>
-        /// German
+        ///     German
         /// </summary>
-        DE,
+        DE, 
 
         /// <summary>
-        /// Portuguese
+        ///     Portuguese
         /// </summary>
-        PT,
+        PT, 
 
         /// <summary>
-        /// Romanian 
+        ///     Romanian
         /// </summary>
-        RO,
+        RO, 
 
         /// <summary>
-        /// Polish
+        ///     Polish
         /// </summary>
-        PL,
+        PL, 
 
         /// <summary>
-        /// Finnish
+        ///     Finnish
         /// </summary>
-        FI,
+        FI, 
 
         /// <summary>
-        /// Dutch
+        ///     Dutch
         /// </summary>
-        NL,
+        NL, 
 
         /// <summary>
-        /// French
+        ///     French
         /// </summary>
-        FR,
+        FR, 
 
         /// <summary>
-        /// Bulgarian
+        ///     Bulgarian
         /// </summary>
-        BG,
+        BG, 
 
         /// <summary>
-        /// Swedish
+        ///     Swedish
         /// </summary>
-        SE,
+        SE, 
 
         /// <summary>
-        ///  Chinese Traditional
+        ///     Chinese Traditional
         /// </summary>
-        ZH_TW,
+        ZH_TW, 
 
         /// <summary>
-        /// Chinese Simplified
+        ///     Chinese Simplified
         /// </summary>
-        ZH_CN,
+        ZH_CN, 
 
         /// <summary>
-        /// Turkish
+        ///     Turkish
         /// </summary>
         TR
     }

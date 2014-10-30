@@ -1,36 +1,30 @@
-﻿// ***********************************************************************
-// Assembly         : OpenWeatherMap
-// Author           : Joan Caron
-// Created          : 02-20-2014
-// License          : MIT License (MIT) http://opensource.org/licenses/MIT
-// Last Modified By : Joan Caron
-// Last Modified On : 02-19-2014
-// ***********************************************************************
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="MetricSystem.cs" company="Joan Caron">
-//     Copyright (c) Joan Caron. All rights reserved.
+// Copyright (c) 2014 All Rights Reserved
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
+// <author>Joan Caron</author>
+// <summary>Implements the metric system class</summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OpenWeatherMap
 {
     /// <summary>
-    /// Enum MetricSystem
+    ///     Enum MetricSystem.
     /// </summary>
     public enum MetricSystem
     {
         /// <summary>
-        /// kelvin
+        ///     kelvin
         /// </summary>
-        Internal,
+        Internal, 
 
         /// <summary>
-        /// Celsius
+        ///     Celsius
         /// </summary>
-        Metric,
+        Metric, 
 
         /// <summary>
-        /// Fahrenheit
+        ///     Fahrenheit
         /// </summary>
         Imperial
     }

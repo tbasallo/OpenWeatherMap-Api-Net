@@ -1,44 +1,44 @@
-﻿// ***********************************************************************
-// Assembly         : OpenWeatherMap
-// Author           : Joan Caron
-// Created          : 02-20-2014
-// License          : MIT License (MIT) http://opensource.org/licenses/MIT
-// Last Modified By : Joan Caron
-// Last Modified On : 02-20-2014
-// ***********************************************************************
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="ForecastPrecipitation.cs" company="Joan Caron">
-//     Copyright (c) Joan Caron. All rights reserved.
+// Copyright (c) 2014 All Rights Reserved
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System.Xml.Serialization;
+// <author>Joan Caron</author>
+// <summary>Implements the forecast precipitation class</summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OpenWeatherMap
 {
+    using System.Xml.Serialization;
+
     /// <summary>
-    /// Class ForecastPrecipitation.
+    ///     Class ForecastPrecipitation.
     /// </summary>
-    public class ForecastPrecipitation
+    public sealed class ForecastPrecipitation
     {
         /// <summary>
-        /// Gets or sets the value.
+        ///     Gets or sets the value.
         /// </summary>
-        /// <value>The value.</value>
+        /// <value>
+        ///     The value.
+        /// </value>
         [XmlAttribute("value")]
         public double Value { get; set; }
 
         /// <summary>
-        /// Gets or sets the type.
+        ///     Gets or sets the type.
         /// </summary>
-        /// <value>The type.</value>
+        /// <value>
+        ///     The type.
+        /// </value>
         [XmlAttribute("type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// Gets or sets the unit.
+        ///     Gets or sets the unit.
         /// </summary>
-        /// <value>The unit.</value>
+        /// <value>
+        ///     The unit.
+        /// </value>
         [XmlAttribute("unit")]
         public string Unit { get; set; }
     }

@@ -1,101 +1,117 @@
-﻿// ***********************************************************************
-// Assembly         : OpenWeatherMap
-// Author           : Joan Caron
-// Created          : 02-20-2014
-// License          : MIT License (MIT) http://opensource.org/licenses/MIT
-// Last Modified By : Joan Caron
-// Last Modified On : 02-20-2014
-// ***********************************************************************
+﻿// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="ForecastTime.cs" company="Joan Caron">
-//     Copyright (c) Joan Caron. All rights reserved.
+// Copyright (c) 2014 All Rights Reserved
 // </copyright>
-// <summary></summary>
-// ***********************************************************************
-
-using System;
-using System.Xml.Serialization;
+// <author>Joan Caron</author>
+// <summary>Implements the forecast time class</summary>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace OpenWeatherMap
 {
+    using System;
+    using System.Xml.Serialization;
+
     /// <summary>
-    /// Class ForecastTime.
+    ///     Class ForecastTime.
     /// </summary>
-    public class ForecastTime
+    public sealed class ForecastTime
     {
         /// <summary>
-        /// Gets or sets from.
+        ///     Gets or sets from.
         /// </summary>
-        /// <value>From.</value>
+        /// <value>
+        ///     From.
+        /// </value>
         [XmlAttribute("from")]
         public DateTime From { get; set; }
 
         /// <summary>
-        /// Gets or sets to.
+        ///     Gets or sets to.
         /// </summary>
-        /// <value>To.</value>
+        /// <value>
+        ///     To.
+        /// </value>
         [XmlAttribute("to")]
         public DateTime To { get; set; }
 
         /// <summary>
-        /// Gets or sets the day.
+        ///     Gets or sets the day.
         /// </summary>
-        /// <value>The day.</value>
+        /// <value>
+        ///     The day.
+        /// </value>
         [XmlAttribute("day")]
         public DateTime Day { get; set; }
 
         /// <summary>
-        /// Gets or sets the symbol.
+        ///     Gets or sets the symbol.
         /// </summary>
-        /// <value>The symbol.</value>
+        /// <value>
+        ///     The symbol.
+        /// </value>
         [XmlElement("symbol")]
         public Symbol Symbol { get; set; }
 
         /// <summary>
-        /// Gets or sets the precipitation.
+        ///     Gets or sets the precipitation.
         /// </summary>
-        /// <value>The precipitation.</value>
+        /// <value>
+        ///     The precipitation.
+        /// </value>
         [XmlElement("precipitation")]
         public ForecastPrecipitation Precipitation { get; set; }
 
         /// <summary>
-        /// Gets or sets the wind direction.
+        ///     Gets or sets the wind direction.
         /// </summary>
-        /// <value>The wind direction.</value>
+        /// <value>
+        ///     The wind direction.
+        /// </value>
         [XmlElement("windDirection")]
         public WindDirection WindDirection { get; set; }
 
         /// <summary>
-        /// Gets or sets the wind speed.
+        ///     Gets or sets the wind speed.
         /// </summary>
-        /// <value>The wind speed.</value>
+        /// <value>
+        ///     The wind speed.
+        /// </value>
         [XmlElement("windSpeed")]
         public WindSpeed WindSpeed { get; set; }
 
         /// <summary>
-        /// Gets or sets the temperature.
+        ///     Gets or sets the temperature.
         /// </summary>
-        /// <value>The temperature.</value>
+        /// <value>
+        ///     The temperature.
+        /// </value>
         [XmlElement("temperature")]
         public Temperature Temperature { get; set; }
 
         /// <summary>
-        /// Gets or sets the pressure.
+        ///     Gets or sets the pressure.
         /// </summary>
-        /// <value>The pressure.</value>
+        /// <value>
+        ///     The pressure.
+        /// </value>
         [XmlElement("pressure")]
         public Pressure Pressure { get; set; }
 
         /// <summary>
-        /// Gets or sets the humidity.
+        ///     Gets or sets the humidity.
         /// </summary>
-        /// <value>The humidity.</value>
+        /// <value>
+        ///     The humidity.
+        /// </value>
         [XmlElement("humidity")]
         public Humidity Humidity { get; set; }
 
         /// <summary>
-        /// Gets or sets the clouds.
+        ///     Gets or sets the clouds.
         /// </summary>
-        /// <value>The clouds.</value>
+        /// <value>
+        ///     The clouds.
+        /// </value>
         [XmlElement("clouds")]
         public ForecastClouds Clouds { get; set; }
     }
