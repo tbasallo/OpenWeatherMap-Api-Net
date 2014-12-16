@@ -4,12 +4,9 @@ platform: Any CPU
 before_build:
 - nuget restore
 build:
+  project: /src/OpenWeatherMap.sln
   verbosity: minimal
-deploy:
-- provider: GitHub
-  auth_token:
-    secure: 21mTZbD23XvqEOB/Q+ZJ9OrTdOuhSAyOuDlgfvg0euvMf3ubKK1W17IpIyY1eUM8
-  draft: true
+deploy: off
 notifications:
 - provider: Email
   to:
