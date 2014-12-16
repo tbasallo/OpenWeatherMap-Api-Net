@@ -1,0 +1,20 @@
+version: 1.0.{build}
+configuration: Release
+platform: Any CPU
+before_build:
+- nuget restore
+build:
+  verbosity: minimal
+deploy:
+- provider: GitHub
+  auth_token:
+    secure: 21mTZbD23XvqEOB/Q+ZJ9OrTdOuhSAyOuDlgfvg0euvMf3ubKK1W17IpIyY1eUM8
+  draft: true
+notifications:
+- provider: Email
+  to:
+  - caronjoan@gmail.com
+  subject: OpenWeatherMap-Api-Net Build
+  on_build_success: true
+  on_build_failure: true
+  on_build_status_changed: true
