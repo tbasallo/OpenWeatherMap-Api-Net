@@ -41,7 +41,7 @@ namespace OpenWeatherMap.Tests
         [ExpectedException(typeof(OpenWeatherMapException))]
         public async Task Can_Get_CurrentWeather_By_City_Name_Exception()
         {
-            var result = await OpenWeatherMapTestClient.CurrentWeather.GetByName("abcdefgh");
+            var result = await OpenWeatherMapTestClient.CurrentWeather.GetByName("abcdefgh");            
         }
 
         [TestMethod]

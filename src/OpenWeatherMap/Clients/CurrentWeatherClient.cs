@@ -8,6 +8,7 @@
 
 namespace OpenWeatherMap
 {
+    using System;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -69,6 +70,23 @@ namespace OpenWeatherMap
         public Task<CurrentWeatherResponse> GetByCityId(int cityId, MetricSystem metric = MetricSystem.Internal, OpenWeatherMapLanguage language = OpenWeatherMapLanguage.EN)
         {
             return this.GetByCityId<CurrentWeatherResponse>(cityId, metric, language, null);
+        }
+
+        /// <summary>
+        ///     Gets by zip code.
+        /// </summary>
+        /// <typeparam name="T">Generic type parameter.</typeparam>
+        /// <param name="zip">Zip Code for loacation.</param>
+        /// <param name="metric">  The metric.</param>
+        /// <param name="language">The language.</param>
+        /// <param name="count">   The count.</param>
+        /// <param name="accuracy">The accuracy.</param>
+        /// <returns>
+        ///     By zip code.
+        /// </returns>
+        public Task<CurrentWeatherResponse> GetByZipCode(string zip, MetricSystem metric = MetricSystem.Internal, OpenWeatherMapLanguage language = OpenWeatherMapLanguage.EN)
+        {
+            return this.GetByZipCode<CurrentWeatherResponse>(zip, metric, language, null, null);
         }
     }
 }

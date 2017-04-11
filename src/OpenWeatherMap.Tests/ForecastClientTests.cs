@@ -26,7 +26,7 @@ namespace OpenWeatherMap.Tests
 
         [TestMethod]
         public async Task Can_Get_Forecast_By_City_Name_MetricSystem_Language()
-        {
+        {            
             var resultIt = await OpenWeatherMapTestClient.Forecast.GetByName(CityName, false, MetricSystem.Metric, OpenWeatherMapLanguage.IT);
             var resultFr = await OpenWeatherMapTestClient.Forecast.GetByName(CityName, false, MetricSystem.Metric, OpenWeatherMapLanguage.FR);
             TestAllProperties(resultIt);

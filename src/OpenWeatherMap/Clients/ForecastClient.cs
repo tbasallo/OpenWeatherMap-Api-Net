@@ -91,5 +91,27 @@ namespace OpenWeatherMap
 
             return this.GetByCityId<ForecastResponse>(cityId, metric, language, count);
         }
+
+        /// <summary>
+        ///     Gets by zip code.
+        /// </summary>
+        /// <typeparam name="T">Generic type parameter.</typeparam>
+        /// <param name="zip">Zip Code for loacation.</param>
+        /// <param name="metric">  The metric.</param>
+        /// <param name="language">The language.</param>
+        /// <param name="count">   The count.</param>
+        /// <param name="accuracy">The accuracy.</param>
+        /// <returns>
+        ///     By zip code.
+        /// </returns>
+        public Task<ForecastResponse> GetByZipCode(string zip, bool daily = false, MetricSystem metric = MetricSystem.Internal, OpenWeatherMapLanguage language = OpenWeatherMapLanguage.EN)
+        {
+            if (daily)
+            {
+                this.Request.Uri = this.Request.Uri.AddSegment("daily");
+            }
+
+            return this.GetByZipCode<ForecastResponse>(zip, metric, language, null, null);
+        }
     }
 }

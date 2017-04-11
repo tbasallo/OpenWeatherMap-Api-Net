@@ -84,6 +84,49 @@ namespace OpenWeatherMap
         }
 
         /// <summary>
+        ///     Gets by zip code.
+        /// </summary>
+        /// <typeparam name="T">Generic type parameter.</typeparam>
+        /// <param name="zip">Zip Code for loacation.</param>
+        /// <param name="metric">  The metric.</param>
+        /// <param name="language">The language.</param>
+        /// <param name="count">   The count.</param>
+        /// <param name="accuracy">The accuracy.</param>
+        /// <returns>
+        ///     By zip code.
+        /// </returns>
+        internal Task<T> GetByZipCode<T>(string zip, MetricSystem metric, OpenWeatherMapLanguage language, int? count, Accuracy? accuracy)
+        {
+            Ensure.ArgumentNotNullOrEmptyString(zip, "zip");
+            Ensure.ArgumentNotNull(metric, "metric");
+            Ensure.ArgumentNotNull(language, "language");
+
+            this.Request.Parameters.Add("zip", zip);
+
+            if (metric != MetricSystem.Internal)
+            {
+                this.Request.Parameters.Add("units", metric.ToString().ToLowerInvariant());
+            }
+
+            if (language != OpenWeatherMapLanguage.EN)
+            {
+                this.Request.Parameters.Add("lang", language.ToString().ToLowerInvariant());
+            }
+
+            if (count.HasValue)
+            {
+                this.Request.Parameters.Add("cnt", count.Value.ToString(CultureInfo.InvariantCulture));
+            }
+
+            if (accuracy.HasValue)
+            {
+                this.Request.Parameters.Add("type", accuracy.Value.ToString().ToLowerInvariant());
+            }
+
+            return this.RunGetRequest<T>();
+        }
+
+        /// <summary>
         ///     Gets by coordinates.
         /// </summary>
         /// <typeparam name="T">Generic type parameter.</typeparam>

@@ -53,5 +53,8 @@ namespace OpenWeatherMap
         ///     Task {ForecastResponse}.
         /// </returns>
         Task<ForecastResponse> GetByCityId(int cityId, bool daily = false, MetricSystem metric = MetricSystem.Internal, OpenWeatherMapLanguage language = OpenWeatherMapLanguage.EN, int? count = null);
+
+        Task<ForecastResponse> GetByZipCode(string zipCode, bool daily = false, MetricSystem metric = MetricSystem.Internal, OpenWeatherMapLanguage language = OpenWeatherMapLanguage.EN);
+
     }
 }
